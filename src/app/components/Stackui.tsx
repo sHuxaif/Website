@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState, useRef } from 'react';
+import React, {useState } from 'react';
 import { motion } from 'framer-motion';
 import { TestRevealCard } from './TextReveal';
 const gradientClass = 'bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text';
@@ -13,7 +13,7 @@ const words = [
 
 
 const QueueWords = () => {
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [currentWordIndex] = useState(0);
 
   return (
     <div className="flex justify-center items-center text-5xl sm:text-7xl">
