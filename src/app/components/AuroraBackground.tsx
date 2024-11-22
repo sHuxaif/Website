@@ -1,10 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import React from "react";
 import { AuroraBackground } from "./ui/aurora-background";
-import { TypewriterEffect } from "./ui/typewriter-effect";
-import StackedWords from "./Stackui";
 import QueueWords from "./Stackui";
 export function AuroraBackgrounds() {
   return (

@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { WavyBackground } from "./ui/wavy-background";
-import { div } from "framer-motion/client";
 import { AnimatedTeam } from "./TeamAimated";
 export function Team() {
   return (
