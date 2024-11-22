@@ -15,14 +15,6 @@ const words = [
 const QueueWords = () => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
-    }, 1500); // 1.5 seconds for each word
-
-    return () => clearInterval(intervalId); // Cleanup interval on unmount
-  }, []);
-
   return (
     <div className="flex justify-center items-center text-5xl sm:text-7xl">
       <motion.div
