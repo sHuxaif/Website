@@ -1,119 +1,105 @@
-"use client";
-import React, { useState } from "react";
-import Link from "next/link";
+import { useState } from 'react'; // Import useState
+import Link from 'next/link';
 
 function NavBarSection() {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State to track dropdown visibility
+  // State for toggling the hamburger menu
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen); // Toggle dropdown visibility
+  // State for toggling the dropdown menu
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  // Toggle function for the hamburger menu
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+
+  // Toggle function for the dropdown menu
+  const toggleDropdown = () => {
+    setIsDropdownOpen((prev) => !prev);
+  };
 
   return (
-    <header className="absolute top-10 left-0 right-0 z-30 max-w-7xl mx-auto px-6">
-      <div className="flex justify-between items-center py-5">
-        {/* Logo - Centered */}
-        <div className="flex justify-center w-full">
-          <Link href="/">
-            <div className="flex items-center space-x-3">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                className="w-10 h-10 text-black p-2 bg-gradient-to-r from-[#a259ff] to-[#ff6250] rounded-full"
-                viewBox="0 0 24 24"
-              >
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-              </svg>
-              <span className="text-3xl sm:text-4xl font-bold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-[#a259ff] to-[#ff6250]">
-                AlphaCoders
-                <p className="text-black text-xl">Software Innovations</p>
-              </span>
-             
-              
-            </div>
-          </Link>
-        </div>
+    <header>
+      <div className="relative">
+        {/* Hamburger Icon - Always visible on small screens */}
+        <button
+          onClick={toggleMenu}
+          className="text-black focus:outline-none lg:hidden"
+        >
+          <span className="text-2xl">&#9776;</span> {/* Hamburger Icon */}
+        </button>
 
-        {/* Dropdown Menu Button */}
-        <div className="relative">
+        {/* Dropdown Menu Button - For larger screens */}
+        <div className="relative hidden lg:block">
           <button
             onClick={toggleDropdown}
-            className="text-black font-semibold transition-all hover:text-[#ff6250] lg:block focus:outline-none"
+            className="text-black font-semibold transition-all hover:text-[#ff6250] focus:outline-none"
           >
             Menu dropodown
           </button>
 
-          {/* Dropdown Links with teal text color */}
+          {/* Dropdown Menu (appears on button click) */}
           {isDropdownOpen && (
-            <div
-              className="absolute right-0 mt-2 p-4  space-y-2 transition-all duration-300 transform scale-95  animate-dropdown"
-              style={{
-                animation: isDropdownOpen
-                  ? "dropdown 0.3s ease-out forwards"
-                  : "none",
-              }}
-            >
-              <Link
-                href="/"
-                className="block text-lg font-semibold text-black hover:text-[#ff6250] py-2 px-4 rounded-md transition-all hover:scale-105"
-              >
-                Home
-              </Link>
-              <Link
-                href="/why-we"
-                className="block text-lg font-semibold text-black hover:text-[#ff6250] py-2 px-4 rounded-md transition-all hover:scale-105"
-              >
-                Why We
-              </Link>
-              <Link
-                href="/what-we-do"
-                className="block text-lg font-semibold text-black hover:text-[#ff6250] py-2 px-4 rounded-md transition-all hover:scale-105"
-              >
-                What We Do
-              </Link>
-              <Link
-                href="/how-we"
-                className="block text-lg font-semibold text-black hover:text-[#ff6250] py-2 px-4 rounded-md transition-all hover:scale-105"
-              >
-                How We
-              </Link>
-              <Link
-                href="/our-craftsmen"
-                className="block text-lg font-semibold text-black hover:text-[#ff6250] py-2 px-4 rounded-md transition-all hover:scale-105"
-              >
-                Our Craftsmen
-              </Link>
-              <Link
-                href="/contact-us"
-                className="block text-lg font-semibold text-black hover:text-[#ff6250] py-2 px-4 rounded-md transition-all hover:scale-105"
-              >
-                Contact Us
-              </Link>
-              <Link
-                href="/career"
-                className="block text-lg font-semibold text-black hover:text-[#ff6250] py-2 px-4 rounded-md transition-all hover:scale-105"
-              >
-                Career
-              </Link>
+            <div className="absolute mt-2 bg-white shadow-lg rounded-lg">
+              {/* Dropdown Links */}
+              <Link href="/home" className="block px-4 py-2">Home</Link>
+              <Link href="/about" className="block px-4 py-2">About</Link>
+              <Link href="/contact" className="block px-4 py-2">Contact</Link>
+              {/* Other links */}
             </div>
           )}
         </div>
-      </div>
 
-      <style jsx>{`
-        @keyframes dropdown {
-          from {
-            transform: scale(0.95);
-            opacity: 0;
-          }
-          to {
-            transform: scale(1);
-            opacity: 1;
-          }
-        }
-      `}</style>
+        {/* Navigation Links - Hidden by default on mobile, visible on large screens */}
+        <nav
+          className={`${
+            isMenuOpen ? 'block' : 'hidden'
+          } lg:flex lg:flex-row lg:space-x-8 lg:items-center lg:w-auto absolute top-16 left-1/2 transform -translate-x-1/2 bg-[#1c1c1c] w-full text-center py-4 space-y-4 lg:bg-transparent lg:space-y-0`}
+        >
+          <Link
+            href="/"
+            className="text-black text-lg font-semibold transition-all hover:text-[#ff6250] hover:scale-105"
+          >
+            Home
+          </Link>
+          <Link
+            href="/why-we"
+            className="text-black text-lg font-semibold transition-all hover:text-[#ff6250] hover:scale-105"
+          >
+            Why We
+          </Link>
+          <Link
+            href="/what-we-do"
+            className="text-black text-lg font-semibold transition-all hover:text-[#ff6250] hover:scale-105"
+          >
+            What We Do
+          </Link>
+          <Link
+            href="/how-we"
+            className="text-black text-lg font-semibold transition-all hover:text-[#ff6250] hover:scale-105"
+          >
+            How We
+          </Link>
+          <Link
+            href="/our-craftsmen"
+            className="text-black text-lg font-semibold transition-all hover:text-[#ff6250] hover:scale-105"
+          >
+            Our Craftsmen
+          </Link>
+          <Link
+            href="/contact-us"
+            className="text-black text-lg font-semibold transition-all hover:text-[#ff6250] hover:scale-105"
+          >
+            Contact Us
+          </Link>
+          <Link
+            href="/career"
+            className="text-black text-lg font-semibold transition-all hover:text-[#ff6250] hover:scale-105"
+          >
+            Career
+          </Link>
+        </nav>
+      </div>
     </header>
   );
 }
