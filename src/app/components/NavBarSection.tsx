@@ -45,7 +45,7 @@ function NavBarSection() {
         <nav
           className={`${
             isMenuOpen ? "block" : "hidden"
-          } lg:flex lg:flex-row lg:space-x-8 lg:items-center lg:w-auto absolute top-16 left-1/2 transform -translate-x-1/2 bg-[#1c1c1c] w-full text-center py-4 space-y-4 lg:bg-transparent lg:space-y-0 lg:hidden`}
+          } lg:flex lg:flex-row lg:space-x-8 lg:items-center lg:w-auto absolute top-16 left-1/2 transform -translate-x-1/2 bg-[#1c1c1c] w-full text-center py-4 space-y-4 lg:bg-transparent lg:space-y-0`}
         >
           <Link
             href="/"

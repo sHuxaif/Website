@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
       {/* Heading and Subtext */}
       <div className={styles.textContainer}>
         <h1 className={styles.heading}>
-          <h6>STRATEGY PLANNING BUILDING</h6>
+          <span>STRATEGY PLANNING BUILDING</span>
           <span>Application Design and Development</span>
         </h1>
         <p className={styles.subtext}>
@@ -24,7 +24,7 @@ const Hero: React.FC = () => {
 
         {/* Call to Action Button */}
         <button className={styles.cta}>
-          Let's Get Started!
+          Let&apos;s Get Started! {/* Here is the escape for the apostrophe */}
           <span className={styles.arrow}>→</span>
         </button>
       </div>
