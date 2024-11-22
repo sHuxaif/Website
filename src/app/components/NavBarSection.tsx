@@ -42,7 +42,7 @@ function NavBarSection() {
             onClick={toggleDropdown}
             className="text-black font-semibold transition-all hover:text-[#ff6250] lg:block focus:outline-none"
           >
-            Menu
+            Menu dropodown
           </button>
 
           {/* Dropdown Links with teal text color */}
