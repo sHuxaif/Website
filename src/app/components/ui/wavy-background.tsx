@@ -23,7 +23,8 @@ export const WavyBackground = ({
   blur?: number;
   speed?: "slow" | "fast";
   waveOpacity?: number;
-  [key: string]: any;
+  // Use `Record<string, unknown>` to allow any other props but still maintain type safety
+  props?: Record<string, unknown>;
 }) => {
   const noise = createNoise3D();
   let w: number, h: number, nt: number;
