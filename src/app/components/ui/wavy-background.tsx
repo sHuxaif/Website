@@ -1,4 +1,3 @@
-"use client";
 import { cn } from "@/app/utils/cn";
 import React, { useEffect, useRef, useState } from "react";
 import { createNoise3D } from "simplex-noise";
@@ -27,13 +26,9 @@ export const WavyBackground = ({
   [key: string]: any;
 }) => {
   const noise = createNoise3D();
-  let w: number,
-    h: number,
-    nt: number,
-    i: number,
-    x: number,
-    ctx: CanvasRenderingContext2D, // specifying type
-    canvas: HTMLCanvasElement; // specifying type
+  let w: number, h: number, nt: number;
+  let ctx: CanvasRenderingContext2D;
+  let canvas: HTMLCanvasElement;
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const getSpeed = () => {
@@ -69,16 +64,16 @@ export const WavyBackground = ({
     "#e879f9",
     "#22d3ee",
   ];
-  
+
   const drawWave = (n: number) => {
     nt += getSpeed();
-    for (let i = 0; i < n; i++) { // Use `let` instead of `var`
+    for (let i = 0; i < n; i++) {
       ctx.beginPath();
       ctx.lineWidth = waveWidth || 50;
       ctx.strokeStyle = waveColors[i % waveColors.length];
-      for (let x = 0; x < w; x += 5) { // Use `let` instead of `var`
+      for (let x = 0; x < w; x += 5) {
         const y = noise(x / 800, 0.3 * i, nt) * 100;
-        ctx.lineTo(x, y + h * 0.5); // adjust for height, currently at 50% of the container
+        ctx.lineTo(x, y + h * 0.5);
       }
       ctx.stroke();
       ctx.closePath();
@@ -99,7 +94,7 @@ export const WavyBackground = ({
     return () => {
       cancelAnimationFrame(animationId);
     };
-  }, []);
+  }, [init]); // Added missing dependencies
 
   const [isSafari, setIsSafari] = useState(false);
   useEffect(() => {
