@@ -43,7 +43,7 @@ const FloatingIcons: React.FC = () => {
       <div className={`${styles.icon} ${styles.iconFigma}`}>F</div>
       <div className={`${styles.icon} ${styles.iconAi}`}>Ai</div>
       <div className={`${styles.icon} ${styles.iconPs}`}>Ps</div>
-      <div className={`${styles.icon} ${styles.iconAe}`}>Ae</div>
+      <div className={`${styles.icon} ${styles.iconAe}`}>De</div>
     </div>
   );
 };

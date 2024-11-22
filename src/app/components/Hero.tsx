@@ -19,7 +19,7 @@ const Hero: React.FC = () => {
           <span>Application Design and Development</span>
         </h1>
         <p className={styles.subtext}>
-          Reaching out to transform the business world into future technology. We help Start-ups, Entrepreneurs, Enterprises shape their business ideas into reality with the support of Next-Gen technology.
+          Reaching out to transform the business world into future technology. 
         </p>
 
         {/* Call to Action Button */}
